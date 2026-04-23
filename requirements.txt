@@ -1,0 +1,31 @@
+# Core utilities
+python-dotenv
+ipython
+
+# Model providers
+openai
+anthropic
+
+# UI
+panel
+
+# Vector stores and database adapters
+chromadb
+pinecone
+weaviate-client
+pgvector
+psycopg[binary]
+
+# LangChain ecosystem
+langchain
+langchain-openai
+langchain-ollama
+langchain-chroma
+langchain-community
+langchain-pinecone
+langchain-postgres
+langgraph
+
+# API serving
+fastapi
+uvicorn[standard]
