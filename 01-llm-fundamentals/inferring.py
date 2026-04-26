@@ -1,4 +1,4 @@
-from main import get_completions
+from llm_factory import get_completions
 
 lamp_review = """
 Needed a nice lamp for my bedroom, and this one had \

@@ -1,6 +1,6 @@
 from IPython.display import display, Markdown, Latex, HTML
 
-from main import get_completions
+from llm_factory import get_completions
 
 # Universal translator
 user_messages = [

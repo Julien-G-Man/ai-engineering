@@ -29,3 +29,5 @@ langgraph
 # API serving
 fastapi
 uvicorn[standard]
+pydantic
+sqlalchemy

@@ -1,4 +1,4 @@
-from main import get_completions
+from llm_factory import get_completions
 
 fact_sheet_chair = """
 OVERVIEW

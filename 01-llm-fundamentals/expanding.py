@@ -1,4 +1,4 @@
-from main import get_completions
+from llm_factory import get_completions
 
 # given the sentiment from the lesson on "inferring",
 # and the original customer message, customize the email

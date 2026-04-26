@@ -1,4 +1,4 @@
-from main import get_completions
+from llm_factory import get_completions
 
 prod_review = """
 Got this panda plush toy for my daughter's birthday, \

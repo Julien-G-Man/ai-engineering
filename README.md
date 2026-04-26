@@ -1,24 +1,28 @@
 # AI Engineering Journey
 
-A hands-on learning repo documenting my path through AI engineering — LLMs, prompt engineering, RAG, vector databases, embeddings, and agents.
+A hands-on learning repo documenting my path through AI engineering - LLMs, RAG, agents, MCPs, and deployment.
 
 ## Curriculum
 
-| Folder | Topic | Course |
-|--------|-------|--------|
-| `01-prompt-engineering/` | Prompt patterns, few-shot, chain-of-thought | [ChatGPT Prompt Engineering for Developers](https://learn.deeplearning.ai/courses/chatgpt-prompt-eng) — DeepLearning.AI |
-| `02-langchain/` | Chains, memory, agents with LangChain | [LangChain for LLM Application Development](https://learn.deeplearning.ai/courses/langchain) — DeepLearning.AI |
-| `02-langchain/` | Multi-step LLM systems | [Building Systems with the ChatGPT API](https://learn.deeplearning.ai/courses/chatgpt-building-system) — DeepLearning.AI |
-| `03-rag-pipeline/` | Embeddings, vector stores, retrieval | [Retrieval Augmented Generation (RAG)](https://www.coursera.org/learn/retrieval-augmented-generation-rag) — DeepLearning.AI x Coursera |
-| `04-mcp/` | MCP servers, clients, tools, resources, prompts | [MCP Course](https://huggingface.co/learn/mcp-course/en/unit0/introduction) — Hugging Face x Anthropic |
-| `05-agents/` | Autonomous agents, tool use, LangGraph | [LangChain Academy](https://academy.langchain.com) — LangChain |
-| `05-agents/` | Transformer architecture, semantic search | [LLM University](https://docs.cohere.com/docs/llmu) — Cohere |
-
-> All courses are free to audit. The Coursera RAG course charges ~$49 for a certificate, but the content is fully accessible without paying.
+| Phase | Folder | Topic | Course |
+|-------|--------|-------|--------|
+| 1 | 01-llm-fundamentals/ | Raw API calls, prompt patterns, context windows, structured outputs | [ChatGPT Prompt Engineering for Developers](https://learn.deeplearning.ai/courses/chatgpt-prompt-eng) - DeepLearning.AI |
+| 1 | 01-llm-fundamentals/ | Building multi-step LLM logic manually, no frameworks | [Building Systems with the ChatGPT API](https://learn.deeplearning.ai/courses/chatgpt-building-system) - DeepLearning.AI |
+| 2 | 02-rag-pipeline/ | Embeddings, chunking strategies, vector stores, retrieval logic | [RAG](https://www.coursera.org/learn/retrieval-augmented-generation-rag) - DeepLearning.AI x Coursera |
+| 2 | 02-rag-pipeline/ | Semantic search, transformer intuition for embeddings | [LLM University](https://docs.cohere.com/docs/llmu) - Cohere |
+| 3 | 03-agents/ | Tool calling, multi-step reasoning, memory vs stateless systems | [Building Systems with the ChatGPT API](https://learn.deeplearning.ai/courses/chatgpt-building-system) - DeepLearning.AI |
+| 4 | 04-mcp/ | Context and memory management across systems, MCP architecture, tool servers | Anthropic MCP Docs + hands-on building |
+| 5 | 05-deployment/ | Serving models with FastAPI, containerization, BentoML basics | MLOps Zoomcamp (free) - DataTalks.Club |
+| 6 | 06-langchain/ | Chains, memory, LangGraph - now as abstraction over what you already know | [LangChain for LLM Application Development](https://learn.deeplearning.ai/courses/langchain) - DeepLearning.AI |
+| 6 | 06-langchain/ | Agents with LangGraph, orchestration patterns | [LangChain Academy](https://academy.langchain.com) - LangChain |
 
 ## Stack
 
-Python · LangChain · OpenAI API · Anthropic API · ChromaDB / Weaviate · FastAPI
+Python · Anthropic API · OpenAI API · ChromaDB / Weaviate · FastAPI · BentoML · Docker · LangChain
+
+## Rule
+
+> If you can't build it without LangChain, you don't understand it yet.
 
 ## Status
 

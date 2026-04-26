@@ -1,11 +1,14 @@
 import os
 from dotenv import load_dotenv, find_dotenv
-from openai import OpenAI
+from llm_factory import get_completions as get_completion_from_messages
+
 import panel as pn
 pn.extension()
 
 load_dotenv(find_dotenv())
 
+"""
+from openai import OpenAI
 client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
 def get_completion_from_messages(messages, model="gpt-3.5-turbo"):
@@ -15,7 +18,7 @@ def get_completion_from_messages(messages, model="gpt-3.5-turbo"):
         temperature=0.2
     )
     return response.choices[0].message.content
-
+"""
 
 def collect_messages(_):
     prompt = inp.value_input

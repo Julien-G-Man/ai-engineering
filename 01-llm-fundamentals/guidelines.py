@@ -4,7 +4,7 @@ I wrote all this while taking a tutorial on DeepLearning.AI
 I reformatted the prompts into functions so they cab easily be swapped for testing
 """
 
-from main import get_completions
+from llm_factory import get_completions
 
 
 #=======================================================
