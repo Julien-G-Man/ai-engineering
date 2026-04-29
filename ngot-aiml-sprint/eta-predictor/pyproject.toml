@@ -1,0 +1,33 @@
+[project]
+name = "eta-predictor"
+version = "0.1.0"
+description = ""
+authors = [
+    {name = "Julien",email = "juliengmanana@gmail.com"}
+]
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "mlflow (==2.14.1)",
+    "scikit-learn (>=1.8.0,<2.0.0)",
+    "pandas (==2.2.2)",
+    "fastapi (>=0.136.1,<0.137.0)",
+    "uvicorn[standard] (>=0.46.0,<0.47.0)",
+    "pydantic (>=2.13.3,<3.0.0)",
+    "joblib (>=1.5.3,<2.0.0)"
+]
+
+[tool.poetry]
+packages = [{include = "eta_predictor", from = "src"}]
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[dependency-groups]
+dev = [
+    "pytest (>=9.0.3,<10.0.0)",
+    "httpx (>=0.28.1,<0.29.0)",
+    "black (>=26.3.1,<27.0.0)",
+    "ruff (>=0.15.12,<0.16.0)"
+]

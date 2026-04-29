@@ -1,6 +1,7 @@
 # Core utilities
 python-dotenv
 ipython
+pandas
 
 # Model providers
 openai
@@ -31,3 +32,6 @@ fastapi
 uvicorn[standard]
 pydantic
 sqlalchemy
+
+# testing
+pytest
