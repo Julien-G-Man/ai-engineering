@@ -9,7 +9,7 @@ A hands-on learning repo documenting my path through AI engineering - LLMs, RAG,
 
 An intensive 10-day bootcamp (12 hrs/day) covering the full AI/ML engineering stack — from MLOps and advanced RAG to multi-agent systems, guardrails, and production deployment. 20+ sector-specific projects shipped across HealthTech, Logistics, SpaceTech, eCommerce, and Fintech.
 
-→ [`00-ngot/`](./00-ngot/)
+→ [`ngot-aiml-sprint/`](./ngot-aiml-sprint/)
 
 ---
 
