@@ -2,14 +2,6 @@
 
 A hands-on learning repo documenting my path through AI engineering - LLMs, RAG, agents, MCPs, and deployment.
 
----
-
-## ⚡ Active: 10-Day Tech Giants Sprint (NGOT)
-**Led by Ransford Oppong · College of Engineering Innovation Centre · 27 Apr – 6 May 2026**
-
-An intensive 10-day bootcamp (12 hrs/day) covering the full AI/ML engineering stack — from MLOps and advanced RAG to multi-agent systems, guardrails, and production deployment. 20+ sector-specific projects shipped across HealthTech, Logistics, SpaceTech, eCommerce, and Fintech.
-
-→ [`ngot-aiml-sprint/`](./ngot-aiml-sprint/)
 
 ---
 
