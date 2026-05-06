@@ -2,6 +2,10 @@
 
 A hands-on learning repo documenting my path through AI engineering - LLMs, RAG, agents, MCPs, and deployment.
 
+This is my personal learning track. I also participated in a  structured 10-Day AI/ML Engineering and Agentic Systems Sprint with NGOT Giants, with actual project work. 
+
+See [10-Day AI/ML and Agentic Systems Sprint](https://github.com/Julien-G-Man/10-Day-AI-ML-and-Agentic-Systems-Sprint).
+
 
 ---
 
