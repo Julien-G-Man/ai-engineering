@@ -7,6 +7,8 @@ This is my personal learning track. I also participated in a  structured 10-Day 
 See [10-Day AI/ML and Agentic Systems Sprint](https://github.com/Julien-G-Man/10-Day-AI-ML-and-Agentic-Systems-Sprint).
 
 
+I'm adding documentations for each section for anyone who might find this repo usefull for learning years from now :)
+
 ---
 
 ## Curriculum
