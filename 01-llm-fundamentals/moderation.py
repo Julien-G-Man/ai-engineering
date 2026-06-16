@@ -23,9 +23,12 @@ def llm_response(messages: str):
     return resp.choices[0].message.content
 
 async def generate_response(query: str, messages: str):
-    resp = (llm_response(messages) if is_request_safe(query) 
-        else "Sorry, I can not answer this question. Please, let's talk about something else")
-    return str(resp)
+    try:
+        resp = (llm_response(messages) if is_request_safe(query) 
+            else "Sorry, I can not answer this question. Please, let's talk about something else")
+        return str(resp)
+    except Exception as e:
+        print("error generating response: ", e)
     
     
 query = """

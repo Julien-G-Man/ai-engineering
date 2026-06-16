@@ -3,6 +3,8 @@ python-dotenv
 ipython
 pandas
 pypdf
+scikit-learn
+matplotlib
 
 # Model providers
 openai
