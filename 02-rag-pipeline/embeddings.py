@@ -14,7 +14,7 @@ def embed_text(text: str | list[str]):
     )
     return response
 
-def create_embeddings(text: str | list[str]):
+def create_embeddings(text: str | list[str]) -> list[float]:
     response = client.embeddings.create(
         model="text-embedding-3-small",
         input=text
@@ -86,17 +86,17 @@ response = embed_text(headline_texts)
 response_dict = response.model_dump()
 
 for i, article in enumerate(articles):
-    article["embedding"] = [response_dict["data"][i]["embedding"]]
+    article["embedding"] = response_dict["data"][i]["embedding"]
 
     
-first_article = articles[0]["embedding"]
+first_article_vector = articles[0]["embedding"]
 
 
 def get_similarity_scores():
     try:
         for i in range(len(articles)):
-            articl = articles[i]["embedding"]
-            sim = cosine_similarity(first_article, articl)
+            article_vector = articles[i]["embedding"]
+            sim = cosine_similarity(first_article_vector, article_vector)
             print(f"{i+1} - Similarity score: {sim}")
     except Exception as e:
         print(f"Error calculating similarity: {e}")

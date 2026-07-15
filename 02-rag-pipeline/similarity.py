@@ -4,14 +4,14 @@ Similarity using Scipy
 
 import numpy as np
 from scipy.spatial import distance
-from embeddings import embed_text, articles
+from embeddings import create_embeddings, articles
 
 search_text = "machine learning"
-search_embedding = embed_text(search_text).model_dump()["data"][0]["embedding"]
+search_embedding = create_embeddings(search_text)[0]
 
 distances = []
-for arti in articles:
-    dist = distance.cosine(search_embedding, arti["embedding"])
+for article in articles:
+    dist = distance.cosine(search_embedding, article["embedding"])
     distances.append(dist)
 
 min_dist_ind = np.argmin(distances)
