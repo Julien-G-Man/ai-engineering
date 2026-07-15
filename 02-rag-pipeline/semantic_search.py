@@ -2,7 +2,7 @@ from scipy.spatial import distance
 from embeddings import articles, embed_text
 
 
-def create_article_text(article):
+def create_article_text(article: dict) -> str:
     return f"""Headline: {article["headline"]}
 Topic: {article["topic"]}
 Keywords: {',' .join(article["keywords"])}"""
