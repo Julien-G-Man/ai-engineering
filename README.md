@@ -1,34 +1,86 @@
 # AI Engineering Journey
 
-A hands-on learning repo documenting my path through AI engineering - LLMs, RAG, agents, MCPs, and deployment.
+A structured, hands-on journey through **AI and Machine Learning Engineering** — from machine learning foundations and neural networks to transformers, foundation models, applied AI systems, and production deployment.
 
-This is my personal learning track. I also participated in a  structured 10-Day AI/ML Engineering and Agentic Systems Sprint with NGOT Giants, with actual project work. 
+This repository originally focused mainly on the **applied AI layer**: LLM APIs, embeddings, RAG, agents, MCP, orchestration, and deployment.
 
-See [10-Day AI/ML and Agentic Systems Sprint](https://github.com/Julien-G-Man/10-Day-AI-ML-and-Agentic-Systems-Sprint).
+That stage was largely completed through the **DataCamp Associate AI Engineer for Developers** track, alongside additional hands-on work and projects.
 
+The direction has now shifted deeper.
 
-I'm adding documentations for each section for anyone who might find this repo usefull for learning years from now :)
+The goal is to build stronger foundations in:
+
+```text
+Machine Learning
+    ↓
+Neural Networks
+    ↓
+Deep Learning
+    ↓
+Transformers
+    ↓
+Foundation Models
+    ↓
+Applied AI
+    ↓
+ML Systems
+```
+
+The objective is to understand not only how to build with AI systems, but also the models, mathematics, training, fine-tuning, evaluation, and infrastructure underneath them.
 
 ---
 
 ## Curriculum
 
-| Phase | Folder | Topic | Course |
-|-------|--------|-------|--------|
-| 1 | 01-llm-fundamentals/ | Raw API calls, prompt patterns, context windows, structured outputs | [ChatGPT Prompt Engineering for Developers](https://learn.deeplearning.ai/courses/chatgpt-prompt-eng) - DeepLearning.AI |
-| 1 | 01-llm-fundamentals/ | Building multi-step LLM logic manually, no frameworks | [Building Systems with the ChatGPT API](https://learn.deeplearning.ai/courses/chatgpt-building-system) - DeepLearning.AI |
-| 2 | 02-rag-pipeline/ | Embeddings, chunking strategies, vector stores, retrieval logic | [RAG](https://www.coursera.org/learn/retrieval-augmented-generation-rag) - DeepLearning.AI x Coursera |
-| 2 | 02-rag-pipeline/ | Semantic search, transformer intuition for embeddings | [LLM University](https://docs.cohere.com/docs/llmu) - Cohere |
-| 3 | 03-agents/ | Tool calling, multi-step reasoning, memory vs stateless systems | [Building Systems with the ChatGPT API](https://learn.deeplearning.ai/courses/chatgpt-building-system) - DeepLearning.AI |
-| 4 | 04-mcp/ | Context and memory management across systems, MCP architecture, tool servers | Anthropic MCP Docs + hands-on building |
-| 5 | 05-deployment/ | Serving models with FastAPI, containerization, BentoML basics | MLOps Zoomcamp (free) - DataTalks.Club |
-| 6 | 06-langchain/ | Chains, memory, LangGraph - now as abstraction over what you already know | [LangChain for LLM Application Development](https://learn.deeplearning.ai/courses/langchain) - DeepLearning.AI |
-| 6 | 06-langchain/ | Agents with LangGraph, orchestration patterns | [LangChain Academy](https://academy.langchain.com) - LangChain |
+| Phase | Focus                                                                 | Main Resources                                                                                                                                                               |
+| ----- | --------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 0     | Mathematics for ML                                                    | [Mathematics for Machine Learning and Data Science — DeepLearning.AI](https://www.deeplearning.ai/specializations/mathematics-for-machine-learning-and-data-science/)        |
+| 1     | Classical Machine Learning, scikit-learn, model evaluation            | [Machine Learning Specialization — Andrew Ng](https://www.coursera.org/specializations/machine-learning-introduction)                                                        |
+| 2     | Neural networks, backpropagation, autograd, fundamentals from scratch | [Neural Networks: Zero to Hero — Andrej Karpathy](https://karpathy.ai/zero-to-hero.html)                                                                                     |
+| 3     | Deep Learning and PyTorch                                             | [Deep Learning Specialization — DeepLearning.AI](https://www.deeplearning.ai/specializations/deep-learning/) · [fast.ai](https://course.fast.ai/)                            |
+| 4     | Transformers, tokenization, embeddings, attention                     | Karpathy material · [Hugging Face LLM Course](https://huggingface.co/learn/llm-course/chapter1/1)                                                                            |
+| 5     | Open-source models, fine-tuning, LoRA/QLoRA, quantization, evaluation | [Hugging Face LLM Course](https://huggingface.co/learn/llm-course/chapter1/1)                                                                                                |
+| 6     | Applied AI: RAG, agents, tool calling, MCP, orchestration             | DataCamp Associate AI Engineer for Developers · DeepLearning.AI · Cohere LLM University · LangChain Academy                                                                  |
+| 7     | ML systems, serving, MLOps, deployment, monitoring                    | [Made With ML](https://madewithml.com/) · [Full Stack Deep Learning](https://fullstackdeeplearning.com/) · [MLOps Zoomcamp](https://github.com/DataTalksClub/mlops-zoomcamp) |
+| 8     | Computer Vision and Edge AI                                           | [Stanford CS231n](https://cs231n.stanford.edu/) and related resources                                                                                                        |
+
+---
+
+## Learning Approach
+
+For important concepts, the goal is to move through four levels:
+
+**understand → implement → use → integrate**
+
+That means understanding the theory, implementing simplified versions where useful, using production frameworks such as scikit-learn and PyTorch, and finally integrating models into real backend and AI systems.
+
+---
 
 ## Stack
 
-Python · Anthropic API · OpenAI API · ChromaDB / Weaviate · FastAPI · BentoML · Docker · LangChain
+Python · NumPy · Pandas · scikit-learn · PyTorch · Hugging Face · OpenAI · Anthropic · FastAPI · PostgreSQL · Redis · Docker · MLflow · DVC · LangChain · LangGraph
+
+---
+
+## Related Work
+
+I also participated in a structured **10-Day AI/ML Engineering and Agentic Systems Sprint with NGOT Giants**, with hands-on project work.
+
+See [10-Day AI/ML and Agentic Systems Sprint](https://github.com/Julien-G-Man/10-Day-AI-ML-and-Agentic-Systems-Sprint).
+
+---
+
+## Documentation
+
+I document concepts, implementations, experiments, and lessons throughout the repository for my own learning and for anyone who may find the material useful later.
+
+---
 
 ## Status
 
-🚧 In progress — started April 2026
+🚧 **In progress**
+
+Started: **April 2026**
+
+**Initial focus:** Applied AI engineering
+**Current direction:** deeper ML, deep learning, foundation models, and production AI systems
