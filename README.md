@@ -1,6 +1,6 @@
-# AI Engineering Journey
+# AI/ML Engineering Journey
 
-A structured, hands-on journey through **AI and Machine Learning Engineering** — from machine learning foundations and neural networks to transformers, foundation models, applied AI systems, and production deployment.
+A structured, hands-on personal curriculum through **AI and Machine Learning Engineering** - from machine learning foundations and neural networks to transformers, foundation models, applied AI systems, and production deployment.
 
 This repository originally focused mainly on the **applied AI layer**: LLM APIs, embeddings, RAG, agents, MCP, orchestration, and deployment.
 
