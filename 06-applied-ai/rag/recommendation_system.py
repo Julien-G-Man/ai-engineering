@@ -29,9 +29,7 @@ def recommend():
     hits = find_n_closest(current_article_embeddings, article_embeddings)
 
     print("Hits...")
-    for hit in hits:
-        article = articles[hit['index']]
-        print(f"{hits.index(hit) + 1}: ", article['headline'])
+    display_hits(hits, articles)
     
     
 
@@ -47,10 +45,13 @@ def recommend_on_multiple_data_points():
     hits = find_n_closest(mean_history_embeddings, article_embeddings)
     
     print("\nFiltered Hits According to history...")
+    display_hits(hits, articles)
+   
+
+def display_hits(hits, articles):
     for hit in hits:
         article = articles[hit['index']]
-        print(f"{hits.index(hit) + 1}: ", article['headline'])
-        
+        print(f"{hits.index(hit) + 1}: ", article['headline'])        
         
 
 if __name__ == "__main__":
