@@ -1,14 +1,36 @@
 from engine import v_engine
+from fastapi import FastAPI
+from schemas import SearchQuery, SearchMatch, SearchResponse, EmbeddingQuery, EmbeddingResponse
 
-query = "To whom did virgin Mary allegedly appear in 1858 in Lourdes France?"
+app = FastAPI()
 
-query_response = v_engine.create_embeddings(query)
-query_emb = query_response.data[0].embedding
 
-retrived_docs = v_engine.query_vector(
-    vector=query_emb,
-    top_k=3
-)
+@app.get("/")
+def root():
+    return {"msg": "Semantic Search API"}
 
-for result in retrived_docs['matches']:
-    print(f"\n{round(result['score'], 2)}: {result['metadata']['text']}")
+
+@app.post("/search")
+def search(query: SearchQuery):
+    query_response = v_engine.create_embeddings(query.text)
+    query_emb = query_response.data[0].embedding
+    
+    retrieved_docs = v_engine.query_vector(
+        vector=query_emb,
+        top_k=3
+    )
+    matches = [
+        SearchMatch(
+            score=round(match["score"], 2),
+            text=match["metadata"]["text"],
+            title=match["metadata"]["title"]
+        )
+        for match in retrieved_docs['matches']
+    ]
+    return SearchResponse(matches=matches)
+
+
+@app.post("/embed", response_model=EmbeddingResponse)
+def embed(query: EmbeddingQuery):
+    response = v_engine.create_embeddings(query.text)
+    return EmbeddingResponse(embedding=response.data[0].embedding)

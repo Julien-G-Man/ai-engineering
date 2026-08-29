@@ -1,10 +1,12 @@
 import os
 import itertools
 from openai import OpenAI
+from pathlib import Path
 from dotenv import load_dotenv
 from pinecone import Pinecone, ServerlessSpec
 
-load_dotenv()
+BASE_DIR = Path(__file__).resolve().parents[2]
+load_dotenv(BASE_DIR / ".env")
 
 INDEX_NAME = 'semantic-search'
 NAMESPACE = 'squad-dataset'
