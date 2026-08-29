@@ -11,22 +11,21 @@ load_dotenv(BASE_DIR / ".env")
 INDEX_NAME = 'semantic-search'
 NAMESPACE = 'squad-dataset'
 
-class VectorEngine:   
+pc = Pinecone(api_key=os.getenv("PINECONE_API_KEY"), pool_threads=30)
+client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
     
-    pc = Pinecone(api_key=os.getenv("PINECONE_API_KEY"), pool_threads=30)
-    
-    def __init__(self):
-        self.ai_client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
-        
-        existing = [idx["name"] for idx in self.pc.list_indexes()]
+
+class VectorEngine:       
+    def __init__(self):        
+        existing = [idx["name"] for idx in pc.list_indexes()]
         if INDEX_NAME not in existing:
             self.create_index(INDEX_NAME)
             
-        self.index = self.pc.Index(INDEX_NAME)
+        self.index = pc.Index(INDEX_NAME)
         self.namespace = NAMESPACE
     
     def create_index(self, INDEX_NAME):
-        self.pc.create_index(
+        pc.create_index(
             name=INDEX_NAME,
             dimension=1536,
             metric = 'dotproduct', # can also be cosine or euclidean
@@ -37,11 +36,11 @@ class VectorEngine:
         )
         
     def respond(self, text: str):
-        response = self.ai_client.chat.completions.create(text)
+        response = client.chat.completions.create(text)
         return response.choices[0].message.content
         
     def create_embeddings(self, text: str) -> list[float]:
-        return self.ai_client.embeddings.create(
+        return client.embeddings.create(
             input=text,
             model="text-embedding-3-small"
         )
@@ -60,10 +59,10 @@ class VectorEngine:
         )
 
     def list_indexes(self):
-        return self.pc.list_indexes()
+        return pc.list_indexes()
 
     def delete_index(self, INDEX_NAME: str):
-        return self.pc.delete_index(INDEX_NAME)
+        return pc.delete_index(INDEX_NAME)
 
     def fetch_vectors(self, ids: list[str] | str):
         """Retrive vectors based on their IDs"""
@@ -149,7 +148,7 @@ class VectorEngine:
             self.index.upsert(vectors=chunk)
          
     def parallel_batch(self, vectors: list[float]):
-        with self.pc.Index(INDEX_NAME,  pool_threads=30) as index:
+        with pc.Index(INDEX_NAME,  pool_threads=30) as index:
             async_results = [index.upsert(vectors=chunk, async_req=True)
                 for chunk in self.chunks(vectors, batch_size=100)]
             
