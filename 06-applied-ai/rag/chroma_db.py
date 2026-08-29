@@ -1,5 +1,5 @@
-import csv
 import os
+import csv
 import logging
 import chromadb
 import tiktoken
