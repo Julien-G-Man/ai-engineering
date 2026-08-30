@@ -1,25 +1,28 @@
-import os
-import numpy as np
 import pandas as pd
 from uuid import uuid4
 from pathlib import Path
 from dotenv import load_dotenv
-from engine import rag_engine
+from engine import RAGEngine, NAMESPACE
 
 load_dotenv()
 
-INDEX_NAME = 'semantic-search'
-NAMESPACE = "youtube-rag-dataset"
+rag_engine = None
+
+def get_rag_engine() -> RAGEngine:
+    global rag_engine
+    if rag_engine is None:
+        rag_engine = RAGEngine()
+    return rag_engine
 
 BASE_DIR = Path(__file__).resolve().parents[2]
 CSV_PATH = BASE_DIR / "files" / "youtube_rag_data.csv"
 
-youtube_df = pd.read_csv(CSV_PATH)
-
-index = rag_engine.index
-batch_limit = 100
-
 def ingest_indexes():
+    youtube_df = pd.read_csv(CSV_PATH)
+    rag_engine = get_rag_engine()
+    index = rag_engine.index
+    batch_limit = 100
+
     total_batches = (len(youtube_df) + batch_limit - 1) // batch_limit
 
     for batch_num, start in enumerate(range(0, len(youtube_df), batch_limit), start=1):
@@ -56,3 +59,4 @@ def ingest_indexes():
 
 if __name__ == "__main__":
     print(ingest_indexes())
+    

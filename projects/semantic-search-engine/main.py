@@ -33,4 +33,5 @@ def search(query: SearchQuery):
 @app.post("/embed", response_model=EmbeddingResponse)
 def embed(query: EmbeddingQuery):
     response = v_engine.create_embeddings(query.text)
-    return EmbeddingResponse(embedding=response.data[0].embedding)
+    embedding = response.data[0].embedding
+    return EmbeddingResponse(embedding=embedding)
