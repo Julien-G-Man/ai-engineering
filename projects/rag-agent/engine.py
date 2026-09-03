@@ -1,10 +1,14 @@
 import os
+import json
+import logging
 from openai import OpenAI
-from dotenv import load_dotenv
-from pinecone import Pinecone, ServerlessSpec
 from repo import store
+from dotenv import load_dotenv
+from tools import convert_currency, tools
+from pinecone import Pinecone, ServerlessSpec
 
 load_dotenv()
+logger = logging.getLogger()
 
 INDEX_NAME = 'semantic-search'
 NAMESPACE = "youtube-rag-dataset"
@@ -52,7 +56,7 @@ class RAGEngine:
         self.index.upsert(vectors=vectors, namespace=NAMESPACE)
     
     
-class LLM():
+class Agent():
     def __init__(self):
         self.openai_client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
         self.system_prompt = """You are a helpful assistant that always answers questions. Keep it very brief."""
@@ -63,8 +67,18 @@ class LLM():
         prompt_end = f"\n\nQuestion: {query}\nAnswer: "
         prompt = prompt_starter + delim.join(docs) + prompt_end
         return prompt
-    
-    
+        
+    def client_response(self, messages: list[dict]):
+        return self.openai_client.responses.create(
+            model="gpt-5.4-mini",
+            reasoning={"effort": "none"},
+            input=messages,
+            tools=tools,
+            include=["web_search_call.action.sources"],
+            tool_choice="auto",
+            temperature=0
+        )
+
     def generate_response(self, prompt: str, sources: list[tuple[str, str]]) -> str:
         messages = [{"role": "system", "content": self.system_prompt}]
         
@@ -74,12 +88,30 @@ class LLM():
             
         messages.append({"role": "user", "content": prompt})
         
-        res = self.openai_client.chat.completions.create(
-            model="gpt-4o-mini",
-            messages=messages,
-            temperature=0
-        )
-        answer = res.choices[0].message.content.strip()
+        resp = self.client_response(messages)
+        
+        messages += resp.output
+        has_function_call = False
+        
+        for item in resp.output:
+            if item.type == "function_call":
+                has_function_call = True
+                if item.name == "convert_currency":
+                    result = convert_currency(**json.loads(item.arguments))
+                    messages.append({
+                        "type" : "function_call_output",
+                        "call_id": item.call_id,
+                        "output": json.dumps({"convert_currency": result}),
+                    })
+        
+        if has_function_call:
+            final_resp = self.client_response(messages)
+            messages +=  final_resp.output
+            logger.info(final_resp.output_text)
+        else:
+            logger.info(resp.output_text)
+        
+        answer = resp.output_text
         answer += "\n\nSources:"
         for source in sources:
             answer += "\n" + source[0] + ": " + source[1]

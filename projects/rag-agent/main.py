@@ -1,18 +1,18 @@
 from fastapi import FastAPI, HTTPException, Depends
-from engine import RAGEngine, LLM
+from engine import RAGEngine, Agent
 from schemas import ChatQuery, ChatResponse, EmbeddingQuery, EmbeddingResponse
 from repo import store
 
 app = FastAPI()
 
-llm = None
+agent = None
 rag_engine = None
 
-def get_llm() -> LLM:
-    global llm
-    if llm is None:
-        llm = LLM()
-    return llm
+def get_agent() -> Agent:
+    global agent
+    if agent is None:
+        agent = Agent()
+    return agent
 
 def get_rag_engine() -> RAGEngine:
     global rag_engine
@@ -30,12 +30,12 @@ def root():
 def generate_answer(
     query: ChatQuery, 
     rag_engine: RAGEngine = Depends(get_rag_engine), 
-    llm: LLM = Depends(get_llm)
+    agent: Agent = Depends(get_agent)
     ):
     try:
         documents, sources = rag_engine.retrieve(query.text, top_k=3)
-        context_prompt = llm.build_prompt_with_context(query.text, documents)
-        response = llm.generate_response(context_prompt, sources)
+        context_prompt = agent.build_prompt_with_context(query.text, documents)
+        response = agent.generate_response(context_prompt, sources)
         store.save_message(query.text, response)
         return ChatResponse(response=response)
     except Exception as e:
@@ -43,13 +43,13 @@ def generate_answer(
 
 
 @app.post("/embed")
-def embed(query: EmbeddingQuery, rag_engine = Depends(get_rag_engine)):
+def embed(query: EmbeddingQuery, rag_engine: RAGEngine = Depends(get_rag_engine)):
     try:
         response  = rag_engine.create_embeddings(query.text)
         embedding = response.data[0].embedding
         return EmbeddingResponse(embedding=embedding)
-    except ValueError:
-        raise HTTPException(status_code=500, detail=str(e))
+    except ValueError as e:
+        raise ValueError(f"Error creating embeddings: {str(e)}")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
         
